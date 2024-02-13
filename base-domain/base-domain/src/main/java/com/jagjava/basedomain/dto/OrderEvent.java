@@ -1,4 +1,15 @@
 package com.jagjava.basedomain.dto;
 
-public record OrderEvent(String message, String status, Order order) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrderEvent {
+
+    String message;
+    String status;
+    Order order;
 }
