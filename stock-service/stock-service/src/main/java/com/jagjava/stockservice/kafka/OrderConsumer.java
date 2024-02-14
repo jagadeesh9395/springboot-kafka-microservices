@@ -1,7 +1,6 @@
 package com.jagjava.stockservice.kafka;
 
 import com.jagjava.basedomain.dto.OrderEvent;
-import com.jagjava.stockservice.OrderDocumentRepository;
 import com.jagjava.stockservice.mapper.OrderMapper;
 import com.jagjava.stockservice.service.OrderDocumentService;
 import org.slf4j.Logger;
@@ -24,9 +23,7 @@ public class OrderConsumer {
     @KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
     private void consume(OrderEvent orderEvent) {
         LOGGER.info("Stock Service Received OrderEvent : {}", orderEvent);
-
-
-        //Save Data to Database
+        //Save Data to MongoDB  Database
         orderDocumentService.saveOrder(orderMapper.doToDoc(orderEvent));
     }
 }
